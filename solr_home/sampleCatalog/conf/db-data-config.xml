@@ -1,0 +1,27 @@
+<dataConfig>
+    <dataSource driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/sm_pro_cat" user="root" password="root"/>
+    <document>
+        <entity name="product" query="SELECT 
+	`PROD_ID`,
+	`PROD_NAME`,
+	`PROD_DESC`,
+	`QUANTITY`,
+	`BUY_PRICE`,
+	`LIST_PRICE`,
+	`SALE_PRICE`,
+	(SELECT `RETAILER_NAME` FROM `retailers` WHERE `RETAILER_ID`=P.`RETAILER_ID`) AS `RETAILER_NAME`
+FROM `products` P">
+            <field column="PROD_ID" name="prodId" />
+			<field column="PROD_NAME" name="prodName" />
+            <field column="PROD_DESC" name="prodDesc" />
+			<field column="QUANTITY" name="quantity" />
+			<field column="BUY_PRICE" name="buyPrice" />
+			<field column="LIST_PRICE" name="listPrice" />	
+			<field column="SALE_PRICE" name="salePrice" />
+			<field column="RETAILER_NAME" name="retailerName" />
+        </entity>
+    </document>
+</dataConfig>
+
+
+
